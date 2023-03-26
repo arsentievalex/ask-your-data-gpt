@@ -61,7 +61,7 @@ def extract_code(gpt_response):
 
 
 # wide layout
-st.set_page_config(layout="wide")
+st.set_page_config(layout="wide", page_icon="🤖", page_title="Ask CSV")
 
 st.title("Ask Your Data 🤖 (GPT-powered)")
 
