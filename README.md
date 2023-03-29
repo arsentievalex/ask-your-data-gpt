@@ -9,10 +9,13 @@ A web app that allows to interact with user-uploaded data in .csv.
 
 
 Upload a csv file with data:
-<img src="https://i.postimg.cc/htTtJfwV/gif-upload.gif" width="500"/>
+
+<img src="https://i.postimg.cc/htTtJfwV/gif-upload.gif"/>
 
 Write a question to your data:
-<img src="https://i.postimg.cc/T33XxhxR/gif-query.gif" width="500"/>
+
+<img src="https://i.postimg.cc/T33XxhxR/gif-query.gif"/>
 
 Create a visualization:
-<img src="https://i.postimg.cc/SxMfJfkV/gif-viz.gif" width="500"/>
+
+<img src="https://i.postimg.cc/SxMfJfkV/gif-viz.gif"/>
