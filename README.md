@@ -1,6 +1,6 @@
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/streamlit/example-app-csv-wrangler/main/app.py)
+[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://arsentievalex-ask-your-data-gpt-main-6b0llr.streamlit.app/)
 
-# ✂️ Ask Your Data (GPT-powered)
+# Ask Your Data (GPT-powered)
 
 A web app that allows to interact with user-uploaded data in .csv.
 
@@ -8,4 +8,11 @@ A web app that allows to interact with user-uploaded data in .csv.
 -  Visualize data from your csv file using natural language. For example, "plot total sales by country and product category"
 
 
-<img src="https://user-images.githubusercontent.com/27242399/141204626-fe2b779a-2038-4905-b66e-23f00648f1c1.png" width="500"/>
+Upload a csv file with data:
+<img src="https://i.postimg.cc/htTtJfwV/gif-upload.gif" width="500"/>
+
+Write a question to your data:
+<img src="https://i.postimg.cc/T33XxhxR/gif-query.gif" width="500"/>
+
+Create a visualization:
+<img src="https://i.postimg.cc/SxMfJfkV/gif-viz.gif" width="500"/>
