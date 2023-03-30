@@ -177,7 +177,7 @@ st.write('')
 # footer info
 # git hub repo
 st.markdown("The code is available in [GitHub repo](https://github.com/arsentievalex/ask-your-data-gpt)")
-st.markdown("Connect with me on [Twitter](https://twitter.com/alexarsentiev) or [LinkedIn](https://www.linkedin.com/in/oleksandr-arsentiev-5554b3168/). If you like this app, consider [buying me a coffee](https://www.buymeacoffee.com/arsentiev) :)")
+st.markdown("Connect with me on [Twitter](https://twitter.com/alexarsentiev) or [LinkedIn](https://www.linkedin.com/in/oleksandr-arsentiev-5554b3168/). If you like this app, consider [buying me a coffee](https://www.buymeacoffee.com/arsentiev) ☕")
 
 
 
