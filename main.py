@@ -168,6 +168,19 @@ elif uploaded_file:
                 st.error('Oops, the GPT response resulted in an error :( Please try again with a different question.')
 
 
+st.write('')
+st.write('')
+st.write('')
+st.write('')
+st.write('')
+st.write('')
+# footer info
+st.write("This app is powered by [GPT-3](https://openai.com/blog/openai-api/) and [Streamlit](https://streamlit.io/).")
 
-
+# connect with me on Twitter
+st.markdown("Connect with me on [Twitter](https://twitter.com/alexarsentiev) or [LinkedIn](https://www.linkedin.com/in/oleksandr-arsentiev-5554b3168/).")
+# buy me coffee
+st.markdown("If you like this app, please consider [buying me a coffee](https://www.buymeacoffee.com/arsentiev).")
+# git hub repo
+st.markdown("Check out the [GitHub repo](https://github.com/arsentievalex/ask-your-data-gpt)")
 
