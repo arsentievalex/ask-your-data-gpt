@@ -13,15 +13,44 @@ import traceback
 
 footer_html = """
     <div class="footer">
+    <style>
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #f0f2f6;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        .footer a {
+            color: #4a4a4a;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            color: #3d3d3d;
+            text-decoration: underline;
+        }
+    </style>
         Connect with me on <a href="https://twitter.com/alexarsentiev" target="_blank">Twitter</a>. 
         If you like this app, consider <a href="https://www.buymeacoffee.com/arsentiev" target="_blank">buying me a coffee</a> ☕
     </div>
 """
 
-
-def apply_css(file_path):
-    with open(file_path) as f:
-        st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+page_bg_img = f"""
+<style>
+[data-testid="stAppViewContainer"] > .main {{
+background-image: url("https://i.postimg.cc/4xgNnkfX/Untitled-design.png");
+background-size: cover;
+background-position: center center;
+background-repeat: no-repeat;
+background-attachment: local;
+}}
+[data-testid="stHeader"] {{
+background: rgba(0,0,0,0);
+}}
+</style>
+"""
 
 
 def create_connection(db_name: str) -> Connection:
@@ -73,8 +102,7 @@ def extract_code(gpt_response):
 
 # wide layout
 st.set_page_config(page_icon="🤖", page_title="Ask CSV")
-apply_css("styles.css")
-
+st.markdown(page_bg_img, unsafe_allow_html=True)
 
 st.title("ASK CSV 🤖 (GPT-powered)")
 st.header('Use Natural Language to Query Your Data')
@@ -114,12 +142,11 @@ elif uploaded_file:
     create_table(conn, df, table_name)
 
 
-    selected_mode = st.selectbox("What do you wanna do?", ["Ask your data", "Create a chart [beta]"])
+    selected_mode = st.selectbox("What do you want to do?", ["Ask your data", "Create a chart [beta]"])
 
     if selected_mode == 'Ask your data':
 
         user_input = st.text_area("Write a concise and clear question about your data. For example: What is the total sales in the USA in 2022?", value='What is the total sales in the USA in 2022?')
-
 
         if st.button("Get Response"):
             try:
