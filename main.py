@@ -11,6 +11,18 @@ from dateutil.parser import parse
 import traceback
 
 
+footer_html = """
+    <div class="footer">
+        Connect with me on <a href="https://twitter.com/alexarsentiev" target="_blank">Twitter</a>. 
+        If you like this app, consider <a href="https://www.buymeacoffee.com/arsentiev" target="_blank">buying me a coffee</a> ☕
+    </div>
+"""
+
+
+def apply_css(file_path):
+    with open(file_path) as f:
+        st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+
 
 def create_connection(db_name: str) -> Connection:
     conn = sqlite3.connect(db_name)
@@ -59,11 +71,13 @@ def extract_code(gpt_response):
         return gpt_response
 
 
-
 # wide layout
-st.set_page_config(layout="wide", page_icon="🤖", page_title="Ask CSV")
+st.set_page_config(page_icon="🤖", page_title="Ask CSV")
+apply_css("styles.css")
 
-st.title("Ask Your Data 🤖 (GPT-powered)")
+
+st.title("ASK CSV 🤖 (GPT-powered)")
+st.header('Use Natural Language to Query Your Data')
 
 uploaded_file = st.file_uploader("Upload a CSV file", type=["csv"])
 
@@ -72,10 +86,8 @@ if uploaded_file is None:
                 👆 Upload a .csv file first. Sample to try: [sample_data.csv](https://docs.google.com/spreadsheets/d/e/2PACX-1vTeB7_jzJtacH3XrFh553m9ahL0e7IIrTxMhbPtQ8Jmp9gCJKkU624Uk1uMbCEN_-9Sf7ikd1a85wIK/pub?gid=0&single=true&output=csv)
                 """)
 
-
 elif uploaded_file:
     df = pd.read_csv(uploaded_file)
-
 
     # Apply the custom function and convert date columns
     for col in df.columns:
@@ -94,7 +106,7 @@ elif uploaded_file:
     cols = df.columns
     cols = ", ".join(cols)
 
-    with st.expander("Preview of the uploaded CSV file"):
+    with st.expander("Preview of the uploaded file"):
         st.table(df.head())
 
     conn = create_connection(":memory:")
@@ -102,7 +114,7 @@ elif uploaded_file:
     create_table(conn, df, table_name)
 
 
-    selected_mode = st.selectbox("What do you wanna do?", ["Ask your data", "Create a chart"])
+    selected_mode = st.selectbox("What do you wanna do?", ["Ask your data", "Create a chart [beta]"])
 
     if selected_mode == 'Ask your data':
 
@@ -137,18 +149,18 @@ elif uploaded_file:
 
             except Exception as e:
                 #st.error(f"An error occurred: {e}")
-                st.error('Oops, the GPT response resulted in an error :( Please try again with a different question.')
+                st.error('Oops, there was an error :( Please try again with a different question.')
 
-    elif selected_mode == 'Create a chart':
+    elif selected_mode == 'Create a chart [beta]':
 
         user_input = st.text_area(
             "Briefly explain what you want to plot from your data. For example: Plot total sales by country and product category", value='Plot total sales by country and product category')
 
-        if st.button("Create a visualization"):
+        if st.button("Create a visualization [beta]"):
             try:
                 # create gpt prompt
                 gpt_input = 'Write code in Python using Plotly to address the following request: {} ' \
-                            'Use df that has the following columns: {}. Do not use animation_group argument and return only code with no import statements and the data has been already loaded in a df variable'.format(user_input, cols)
+                            'Use df that has the following columns: {}. Do not use animation_group argument and return only code with no import statements, the data has been already loaded in a df variable'.format(user_input, cols)
 
                 gpt_response = generate_gpt_reponse(gpt_input, max_tokens=1500)
 
@@ -165,19 +177,10 @@ elif uploaded_file:
             except Exception as e:
                 #st.error(f"An error occurred: {e}")
                 #st.write(traceback.print_exc())
-                st.error('Oops, the GPT response resulted in an error :( Please try again with a different question.')
+                st.error('Oops, there was an error :( Please try again with a different question.')
 
-
-st.write('')
-st.write('')
-st.write('')
-st.write('')
-st.write('')
-st.write('')
-# footer info
-# git hub repo
-st.markdown("The code is available in [GitHub repo](https://github.com/arsentievalex/ask-your-data-gpt)")
-st.markdown("Connect with me on [Twitter](https://twitter.com/alexarsentiev) or [LinkedIn](https://www.linkedin.com/in/oleksandr-arsentiev-5554b3168/). If you like this app, consider [buying me a coffee](https://www.buymeacoffee.com/arsentiev) ☕")
+# footer
+st.markdown(footer_html, unsafe_allow_html=True)
 
 
 
