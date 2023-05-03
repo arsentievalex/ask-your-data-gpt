@@ -1,4 +1,4 @@
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://arsentievalex-ask-your-data-gpt-main-6b0llr.streamlit.app/)
+[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://ask-csv.streamlit.app/)
 
 # Ask Your Data (GPT-powered)
 
