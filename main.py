@@ -149,6 +149,7 @@ elif uploaded_file:
         user_input = st.text_area("Write a concise and clear question about your data. For example: What is the total sales in the USA in 2022?", value='What is the total sales in the USA in 2022?')
 
         if st.button("Get Response"):
+
             try:
                 # create gpt prompt
                 gpt_input = 'Write a sql lite query based on this question: {} The table name is my_table and the table has the following columns: {}. ' \
@@ -187,7 +188,7 @@ elif uploaded_file:
             try:
                 # create gpt prompt
                 gpt_input = 'Write code in Python using Plotly to address the following request: {} ' \
-                            'Use df that has the following columns: {}. Do not use animation_group argument and return only code with no import statements, the data has been already loaded in a df variable'.format(user_input, cols)
+                            'Use df that has the following columns: {}. Do not use animation_group argument and return only code with no import statements, use transparent background, the data has been already loaded in a df variable'.format(user_input, cols)
 
                 gpt_response = generate_gpt_reponse(gpt_input, max_tokens=1500)
 
